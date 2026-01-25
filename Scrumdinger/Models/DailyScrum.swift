@@ -1,14 +1,14 @@
-/*
- See LICENSE folder for this sample’s licensing information.
- */
-
 import Foundation
 import ThemeKit
 import SwiftData
 
+
+@Model
 class DailyScrum: Identifiable {
-    let id: UUID
+    var id: UUID
     var title: String
+    
+    @Relationship(deleteRule: .cascade, inverse: \Attendee.dailyScrum)
     var attendees: [Attendee]
     var lengthInMinutes: Int
     var lengthInMinutesAsDouble: Double {
@@ -20,6 +20,8 @@ class DailyScrum: Identifiable {
         }
     }
     var theme: Theme
+    
+    @Relationship(deleteRule: .cascade, inverse: \History.dailyScrum)
     var history: [History] = []
     
     init(id: UUID = UUID(), title: String, attendees: [String], lengthInMinutes: Int, theme: Theme) {
@@ -30,5 +32,3 @@ class DailyScrum: Identifiable {
         self.theme = theme
     }
 }
-
-

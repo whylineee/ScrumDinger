@@ -1,15 +1,14 @@
-/*
- See LICENSE folder for this sample’s licensing information.
- */
-
 import SwiftUI
+
 
 struct DetailEditView: View {
     @Binding var scrum: DailyScrum
     let saveEdits: (DailyScrum) -> Void
 
+
     @State private var attendeeName = ""
     @Environment(\.dismiss) private var dismiss
+
 
     var body: some View {
         Form {
@@ -37,7 +36,7 @@ struct DetailEditView: View {
                     TextField("New Attendee", text: $attendeeName)
                     Button(action: {
                         withAnimation {
-                            let attendee = DailyScrum.Attendee(name: attendeeName)
+                            let attendee = Attendee(name: attendeeName)
                             scrum.attendees.append(attendee)
                             attendeeName = ""
                         }
@@ -64,6 +63,7 @@ struct DetailEditView: View {
         }
     }
 }
+
 
 #Preview {
     @Previewable @State var scrum = DailyScrum.sampleData[0]
