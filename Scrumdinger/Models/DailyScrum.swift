@@ -31,4 +31,6 @@ class DailyScrum: Identifiable {
         self.lengthInMinutes = lengthInMinutes
         self.theme = theme
     }
+    
+    static let emptyScrum = DailyScrum(title: "", attendees: [], lengthInMinutes: 5, theme: .seafoam)
 }
